@@ -34,7 +34,12 @@ password = '82497ee3'
 server = 'localhost'
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://{}:{}@{}/data".format(username, password, server)
 
-app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
+'''for flask jwt extended libraby'''
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
+app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=30)
+
+'''for jwt library'''
+#app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
 
 app.config['JWT_BLACKLIST_ENABLED']= True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access','refresh']   
